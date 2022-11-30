@@ -7,7 +7,7 @@ app = create_app()
 
 
 def create_testdata():
-    u = User(firstname="Peter", lastname="Mustermann")
+    u = User(firstname="Peter", lastname="Mustermann", nickname="Ziegenpeter")
     a1 = Address(user=u, email_address="peter@example.com")
     a2 = Address(user=u, email_address="mustermann@example.com")
     db.session.add(a1)
