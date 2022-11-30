@@ -29,3 +29,14 @@ import sqlalchemy
 # Monkey-Patch version "2.0.0b3" to avoid sqlalchemy_utils init-error
 sqlalchemy.__version__ = "2.0.0"
 ```
+
+## Notes
+
+In theory `nullable=True` and `Optional` should be equivalent.
+So far this does not work with flask-sqlalchemy.
+
+```
+mapped_column() will derive additional arguments from the corresponding Mapped type annotation on the left side, if present. Additionally, Declarative will generate an empty mapped_column() directive implicitly, whenever a Mapped type annotation is encountered that does not have a value assigned to the attribute (this form is inspired by the similar style used in Python dataclasses); this mapped_column() construct proceeds to derive its configuration from the Mapped annotation present.
+```
+
+> Source: https://docs.sqlalchemy.org/en/20/orm/declarative_tables.html#orm-declarative-table
