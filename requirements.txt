@@ -2,3 +2,4 @@ flask==2.2.2
 flask-sqlalchemy==3.0.2
 sqlalchemy[mypy]==2.0.0b3
 sqlalchemy-utils==0.38.3
+python-dotenv==0.21.0

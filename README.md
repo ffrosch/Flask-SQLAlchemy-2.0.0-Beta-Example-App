@@ -10,6 +10,12 @@ The class attribute `__mapper_args__` supplies an example mechanism to automatic
 
 The database backend is configured as a **SQLite In-Memory** database (`"sqlite://"`)
 
+## Configuration
+
+Configuration can be adjusted by creating a file `.env` in the root folder and setting values there.
+The file `config.py` provides a basic configuration and should not be used for production.
+It is way too easy to accidentially commit production settings to version control.
+
 ## Usage
 
 1. Clone the repo, e.g. with the Github-CLI: `gh repo clone ffrosch/SQLAlchemy-2.0.0-Beta-Example-App`
