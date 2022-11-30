@@ -1,3 +1,5 @@
+from sqlalchemy import select
+
 from app import create_app, db
 from app.models import Address, User
 
@@ -21,4 +23,5 @@ def make_shell_context():
         "Address": Address,
         "User": User,
         "create_testdata": create_testdata,
+        "select": select,
     }

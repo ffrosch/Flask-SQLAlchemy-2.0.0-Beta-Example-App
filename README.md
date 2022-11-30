@@ -15,7 +15,7 @@ The class attribute `__mapper_args__` supplies an example mechanism to automatic
 1. Activate the virtual environment: `source env/bin/activate`
 1. Install dependencies: `pip install -r requirements.txt`
 1. Use `flask shell` in the root folder to get an interactive shell.
-   The shell is configured in `wsgi.py` (which is run by flask) and gives access to `db`, `Address`, `User` and `create_testdata()`.
+   The shell is configured in `wsgi.py` (which is run by flask) and gives access to `db`, `Address`, `User`, `select` and `create_testdata()`.
 1. Play around with these commands!
 
 If you want to use **SQLAlchemy-Utils**, insert this code at the very top of the file:
