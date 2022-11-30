@@ -8,6 +8,8 @@ This example app uses the new typechecking-friendly **SQLAlchemy 2** idiom for O
 
 The class attribute `__mapper_args__` supplies an example mechanism to automatically update the timestamp of a column.
 
+The database backend is configured as a **SQLite In-Memory** database (`"sqlite://"`)
+
 ## Usage
 
 1. Clone the repo, e.g. with the Github-CLI: `gh repo clone ffrosch/SQLAlchemy-2.0.0-Beta-Example-App`
