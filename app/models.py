@@ -8,7 +8,17 @@ from sqlalchemy.orm import Mapped, column_property, mapped_column, relationship
 from .extensions import db
 
 
-class User(db.Model):
+class TimestampMixin:
+    created = mapped_column(DateTime, nullable=False, default=datetime.utcnow)
+    updated = mapped_column(DateTime, nullable=False)
+
+    __mapper_args__ = {
+        "version_id_col": updated,
+        "version_id_generator": lambda v: datetime.utcnow(),
+    }
+
+
+class User(TimestampMixin, db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
     firstname: Mapped[str] = mapped_column(String(50))
     lastname: Mapped[str] = mapped_column(String(50))
@@ -17,12 +27,6 @@ class User(db.Model):
     )
 
     addresses: Mapped[List["Address"]] = relationship(back_populates="user")
-    timestamp = mapped_column(DateTime, nullable=False)
-
-    __mapper_args__ = {
-        "version_id_col": timestamp,
-        "version_id_generator": lambda v: datetime.now(),
-    }
 
     def __repr__(self):
         return (
@@ -32,7 +36,7 @@ class User(db.Model):
         )
 
 
-class Address(db.Model):
+class Address(TimestampMixin, db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
     email_address: Mapped[str]
