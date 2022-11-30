@@ -1,8 +1,8 @@
 # mypy: disable-error-code=name-defined
 from datetime import datetime
-from typing import List, Optional
+from typing import List
 
-from sqlalchemy import DateTime, ForeignKey, String, Text
+from sqlalchemy import DateTime, ForeignKey, String
 from sqlalchemy.orm import Mapped, column_property, mapped_column, relationship
 
 from .extensions import db
@@ -32,7 +32,7 @@ class User(TimestampMixin, db.Model):
         return (
             f"User-ID: {self.id}, "
             f"Name: {self.fullname}, "
-            f"Addresses: {[a.email_address for a in self.addresses]}"
+            f"E-Mail Addresses: {[a.email_address for a in self.addresses]}"
         )
 
 
@@ -40,9 +40,6 @@ class Address(TimestampMixin, db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
     email_address: Mapped[str]
-    address_statistics: Mapped[Optional[str]] = mapped_column(
-        Text, deferred=True
-    )
 
     user: Mapped["User"] = relationship(back_populates="addresses")
 
