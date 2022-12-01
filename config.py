@@ -1,17 +1,18 @@
-import os
+from os import environ, path
 
 from dotenv import load_dotenv
 
-basedir = os.path.abspath(os.path.dirname(__file__))
-load_dotenv(os.path.join(basedir, ".env"))
+basedir = path.abspath(path.dirname(__file__))
+load_dotenv(path.join(basedir, ".env"))
 
 
 class Config:
-    SECRET_KEY = os.environ.get("SECRET_KEY") or "you-will-never-guess"
+    # General
+    SECRET_KEY = environ.get("SECRET_KEY") or "you-will-never-guess"
+
+    # Database
     SQLALCHEMY_DATABASE_URI = (
-        os.environ.get("DATABASE_URL", "").replace(
-            "postgres://", "postgresql://"
-        )
-        or "sqlite://"  # In-Memory Database
+        environ.get("SQLALCHEMY_DATABASE_URI") or "sqlite://"  # In-Memory
     )
+    SQLALCHEMY_ECHO = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
