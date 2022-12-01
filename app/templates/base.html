@@ -2,9 +2,17 @@
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
+    <meta name="description" content="Website description" />
+    <meta name="keywords" content="Python, Flask, PostgreSQL, HTML, CSS" />
+    <meta name="author" content="Florian Frosch" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
       {% block title %}
+        {% if title %}
+          {{ title }}
+        {% else %}
+          {{ _('Welcome to this Website') }}
+        {% endif %}
       {% endblock title %}
     </title>
   </head>
