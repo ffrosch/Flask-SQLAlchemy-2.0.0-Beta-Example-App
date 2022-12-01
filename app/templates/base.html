@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+      {% endblock title %}
+    </title>
+  </head>
+  <body>
+    {% block navbar %}
+    {% endblock navbar %}
+    {% block content %}
+    {% endblock content %}
+    {% block scripts %}
+    {% endblock scripts %}
+    {% if config.DEBUG == True %}<script type="text/javascript" src="https://livejs.com/live.js"></script>{% endif %}
+  </body>
+</html>

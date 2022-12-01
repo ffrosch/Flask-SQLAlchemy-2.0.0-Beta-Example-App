@@ -4,3 +4,4 @@ bandit==1.7.4
 black==22.10.0
 flake8==5.0.4
 mypy==0.991
+djlint==1.19.7 # formatting html with template strings
