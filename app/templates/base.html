@@ -6,23 +6,34 @@
     <meta name="keywords" content="Python, Flask, PostgreSQL, HTML, CSS" />
     <meta name="author" content="Florian Frosch" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href={{ url_for('static', filename='style.css') }} />
     <title>
-      {% block title %}
-        {% if title %}
-          {{ title }}
-        {% else %}
-          {{ _('Welcome to this Website') }}
-        {% endif %}
-      {% endblock title %}
+      {% if title %}
+        {{ title }}
+      {% else %}
+        {{ 'Welcome' }}
+      {% endif %}
     </title>
   </head>
   <body>
-    {% block navbar %}
-    {% endblock navbar %}
-    {% block content %}
-    {% endblock content %}
-    {% block scripts %}
-    {% endblock scripts %}
-    {% if config.DEBUG == True %}<script type="text/javascript" src="https://livejs.com/live.js"></script>{% endif %}
+    <div class="container">
+      <header>
+        {% include "navigation.html" %}
+      </header>
+      <main>
+        {% block content %}
+        {% endblock content %}
+      </main>
+      <footer>
+        {% include "footer.html" %}
+      </footer>
+    </div>
+    <div class="scripts">
+      {% include "scripts.html" %}
+      {% if config.DEBUG == True %}
+        <!-- Autorefresh during development -->
+        <script type="text/javascript" src="https://livejs.com/live.js"></script>
+      {% endif %}
+    </div>
   </body>
 </html>

@@ -1,0 +1,30 @@
+/* Trick: */
+body {
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
+}
+
+body::after {
+  content: "";
+  display: block;
+  height: 50px; /* Set same as footer's height */
+}
+
+header {
+  min-height: 50px;
+  background: lightcyan;
+}
+
+main {
+  flex: 1;
+  margin-left: 20px;
+}
+
+footer {
+  background: PapayaWhip;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+}
