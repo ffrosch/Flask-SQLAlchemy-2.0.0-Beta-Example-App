@@ -22,6 +22,7 @@ In production the `.flaskenv` file will not be loaded!
 
 - [Static files](https://flask.palletsprojects.com/en/2.2.x/tutorial/static/) can be referenced relative to the apps `app/static` folder like so: `{{ url_for('static', filename='style.css') }}`
 - [Templates](https://flask.palletsprojects.com/en/2.2.x/tutorial/templates/) are automatically found in the folder `app/templates`
+- [Blueprints](https://flask.palletsprojects.com/en/2.2.x/blueprints/) and how they work with templates and static files
 
 ## Usage
 
