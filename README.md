@@ -12,16 +12,40 @@ The database backend is configured as a **SQLite In-Memory** database (`"sqlite:
 
 ## Configuration
 
+For development the `.flaskenv` file is used.
+It is automatically loaded by flask's integrated webserver.
+
 Configuration can be adjusted by creating a file `.env` in the root folder and setting values there.
+The `.env` file will be loaded automatically by `config.py` and replace default settings.
+
 The file `config.py` provides a basic configuration and should not be used for production.
 It is way too easy to accidentially commit production settings to version control.
+
+**Configuration resolution**
+
+- Development: `commandline arguments` > `.env` > `.flaskenv` > `config.py`
+- Production: `.env` > `config.py`
+
+**Structure**
+
+- [Static files](https://flask.palletsprojects.com/en/2.2.x/tutorial/static/) can be referenced relative to the apps `app/static` folder like so: `{{ url_for('static', filename='style.css') }}`
 
 ## Usage
 
 1. Clone the repo, e.g. with the Github-CLI: `gh repo clone ffrosch/SQLAlchemy-2.0.0-Beta-Example-App`
 1. Create a virtual environment for Python within the cloned repo: `python -m venv env`
 1. Activate the virtual environment: `source env/bin/activate`
+
+### Production
+
 1. Install dependencies: `pip install -r requirements.txt`
+1. Copy `.env.example` to `.env` and set the variables up for production
+1. Setup a WSGI server
+
+### Development
+
+1. Install dependencies: `pip install -r requirements.dev.txt` (the normal requirements file will also be loaded and read)
+1. Use the [flask cli](https://flask.palletsprojects.com/en/2.2.x/cli/) to serve the application in development & debug mode with `flask --debug run`
 1. Use `flask shell` in the root folder to get an interactive shell.
    The shell is configured in `wsgi.py` (which is run by flask) and gives access to `db`, `Address`, `User`, `select` and `create_testdata()`.
 1. Play around with these commands!
