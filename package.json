@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "autoprefixer": "^10.4.13",
+    "cssnano": "^5.1.14",
+    "postcss": "^8.4.19",
+    "postcss-cli": "^10.1.0",
+    "tailwindcss": "^3.2.4"
+  },
+  "scripts": {
+    "build:css": "npx postcss ./app/static/src/main.css -o ./app/static/dist/main.min.css",
+    "build": "npm run build:css",
+    "watch": "npx tailwindcss -i ./app/static/src/main.css -o ./app/static/dist/main.min.css --minify --watch"
+  }
+}

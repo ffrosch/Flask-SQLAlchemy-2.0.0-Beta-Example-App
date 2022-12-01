@@ -1,4 +1,8 @@
 __pycache__
 .mypy_cache
 env
+node_modules
 .env
+
+# this folder is generated automatically by postcss
+app/static/dist

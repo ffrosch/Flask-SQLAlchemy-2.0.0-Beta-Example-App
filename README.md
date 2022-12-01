@@ -29,6 +29,13 @@ In production the `.flaskenv` file will not be loaded!
 1. Clone the repo, e.g. with the Github-CLI: `gh repo clone ffrosch/SQLAlchemy-2.0.0-Beta-Example-App`
 1. Create a virtual environment for Python within the cloned repo: `python -m venv env`
 1. Activate the virtual environment: `source env/bin/activate`
+1. Install `npm`
+   ```bash
+   wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+   source ~/.bashrc # Reload .bashrc
+   ```
+1. Install dependencies for CSS Framework Tailwind with `npm install`(installs everything from `package.json`)
+1. Build the CSS files with `npm run build` (the build script is defined in `package.json`)
 
 ### Production
 
@@ -38,10 +45,14 @@ In production the `.flaskenv` file will not be loaded!
 
 ### Development
 
+During development two commandline instances are needed. One to run `flask --debug run` and one to run `npm run watch`.
+This is important for making sure, that css classes that were not used before are added and rendered!
+
 1. Install dependencies: `pip install -r requirements.dev.txt` (the normal requirements file will also be loaded and read)
 1. Use the [flask cli](https://flask.palletsprojects.com/en/2.2.x/cli/) to serve the application in development & debug mode with `flask --debug run`
 1. ... Or use `flask shell` in the root folder to get an interactive shell.
    The shell is configured in `wsgi.py` (which is run by flask) and gives access to `db`, `Address`, `User`, `select` and `create_testdata()`.
+1. Auto-rebuild CSS files on changes in html-files with `npm run watch`
 
 ## Notes
 
