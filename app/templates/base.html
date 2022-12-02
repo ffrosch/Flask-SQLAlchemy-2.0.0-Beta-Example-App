@@ -23,6 +23,12 @@
         {% include "navigation.html" %}
       </header>
       <main>
+        {% for msg in get_flashed_messages() %}
+          <div class="mx-auto flex max-w-sm shadow-lg items-center p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+               role="alert">
+            <p class="font-semibold">{{ msg }}</p>
+          </div>
+        {% endfor %}
         {% block content %}
         {% endblock content %}
       </main>
