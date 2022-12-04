@@ -8,6 +8,13 @@ The class attribute `__mapper_args__` supplies an example mechanism to automatic
 
 The database backend is configured as a **SQLite In-Memory** database (`"sqlite://"`)
 
+## TODO
+
+- [flask-talisman](https://github.com/GoogleCloudPlatform/flask-talisman) for setting HTTP headers
+- [alembic](https://alembic.sqlalchemy.org/) for migrations, ALTER statements, etc.
+- use sqlalchemy-utils [Model mixin](https://sqlalchemy-utils.readthedocs.io/en/latest/models.html) `generic_repr`
+- implement Babel and/or SQLAlchemy-i18n/sqlalchemy-utils-TranslationHybrid
+
 ## Configuration
 
 The app imports settings from `config.py`, which provides default values that are overriden by environment variables.
