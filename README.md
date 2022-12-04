@@ -11,9 +11,18 @@ The database backend is configured as a **SQLite In-Memory** database (`"sqlite:
 ## TODO
 
 - [flask-talisman](https://github.com/GoogleCloudPlatform/flask-talisman) for setting HTTP headers
-- [alembic](https://alembic.sqlalchemy.org/) for migrations, ALTER statements, etc.
+- [alembic](https://alembic.sqlalchemy.org/)/Flask-Migrate for migrations, ALTER statements, etc.
 - use sqlalchemy-utils [Model mixin](https://sqlalchemy-utils.readthedocs.io/en/latest/models.html) `generic_repr`
 - implement Babel and/or SQLAlchemy-i18n/sqlalchemy-utils-TranslationHybrid
+- add Docker Compose support
+- add Login support
+- add testing
+- add license
+- transform to cookiecutter template
+- add flask-marshmallow
+- add flask-admin
+- add flask-security
+- create jinja2 macros, e.g. for flashing and forms ([example](https://github.com/italomaia/flask-empty/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/templates/macros))
 
 ## Configuration
 
