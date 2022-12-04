@@ -23,6 +23,8 @@ The database backend is configured as a **SQLite In-Memory** database (`"sqlite:
 - add flask-admin
 - add flask-security
 - create jinja2 macros, e.g. for flashing and forms ([example](https://github.com/italomaia/flask-empty/tree/master/%7B%7B%20cookiecutter.repo_name%20%7D%7D/templates/macros))
+- JWT token authentication
+- celery background workers
 
 ## Configuration
 
