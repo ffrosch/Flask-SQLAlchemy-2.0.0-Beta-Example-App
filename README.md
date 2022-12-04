@@ -31,6 +31,18 @@ In production the `.flaskenv` file will not be loaded!
 - [Templates](https://flask.palletsprojects.com/en/2.2.x/tutorial/templates/) are automatically found in the folder `app/templates`
 - [Blueprints](https://flask.palletsprojects.com/en/2.2.x/blueprints/) and how they work with templates and static files
 
+## Security
+
+- CSRF: Include CSRF tokens on every view (e.g. with FlaskForm) -> no site can make your browser send a malicious request to another site with your credentials (because your browser would make the request triggered by the site, the browser would use your auth cookie and thus the site would think it was your request). If you are using something else than Flask-WTF, check whether you can configure the library to use a CSRF token by default for every request.
+
+  > Basically for each request that modifies content on the server you would have to either use a one-time token and store that in the cookie and also transmit it with the form data. After receiving the data on the server again, you would then have to compare the two tokens and ensure they are equal. Why does Flask not do that for you? The ideal place for this to happen is the form validation framework, which does not exist in Flask. ([flask](https://flask.palletsprojects.com/en/2.2.x/security/#cross-site-request-forgery-csrf))
+
+- CORS: Implement very strict acces control with the `Access-Control-Allow-Origin` HTTP headers to [mitigate](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) the risks of cross-origin HTTP requests
+- CSP: [Content Security Policy](https://flask.palletsprojects.com/en/2.2.x/security/#security-csp) response header. This is important to set so that e.g. `<a href=` can't load javascript code
+- [HTTP Security Headers](https://flask.palletsprojects.com/en/2.2.x/security/#security-headers) in general
+- XSS: [Cross-Site Scripting](https://flask.palletsprojects.com/en/2.2.x/security/#cross-site-scripting-xss). This is needed to avoid injection of arbitrary HTML (and with it JavaScript) into the context of a website. All values must be properly escaped! Flask configures Jinja2 to do this automatically, so all templates should be safe. Jinja2 cannot prevent attribute injection in expressions like these `<input value={{ value }}>`. Solve this by always quoting your attributes `<input value="{{ value }}">`.
+- SQL Injection: SQLAlchemy prevents this by quoting all data. Make sure to use proper [SQLAlchemy variable substitution](https://docs.sqlalchemy.org/en/20/tutorial/dbapi_transactions.html#sending-parameters) so as to not bypass this mechanism!
+
 ## Usage
 
 1. Clone the repo, e.g. with the Github-CLI: `gh repo clone ffrosch/SQLAlchemy-2.0.0-Beta-Example-App`
